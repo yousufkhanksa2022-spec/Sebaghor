@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>সেবাঘর — লোকাল সার্ভিস বুকিং</title>
+<meta name="description" content="বাংলাদেশের বিশ্বস্ত হোম সার্ভিস বুকিং প্ল্যাটফর্ম — ইলেকট্রিশিয়ান, প্লাম্বার, এসি সার্ভিসিং, টিউটর ও আরও অনেক কিছু।">
+<meta name="theme-color" content="#0B3D2E">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700&display=swap" rel="stylesheet">
+<!-- Firebase SDK (compat build — সহজে বোঝার জন্য) -->
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore-compat.js"></script>
+<style>
+  :root {
+    --bg: #FBF9F4;
+    --surface: #FFFFFF;
+    --surface-2: #F3F0E6;
+    --ink: #16241E;
+    --muted: #6B7D74;
+    --primary: #0B3D2E;
+    --primary-ink: #FFFFFF;
+    --primary-light: #E7F0EA;
+    --accent: #E8A33D;
+    --accent-ink: #2B1B00;
+    --danger: #C1443C;
+    --success: #2E7D4F;
+    --border: #E3DFD3;
+    --radius-s: 10px;
+    --radius-m: 16px;
+    --radius-l: 24px;
+    --shadow: 0 1px 2px rgba(11,61,46,0.06), 0 4px 16px rgba(11,61,46,0.06);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --bg: #0E1712;
+      --surface: #16241E;
+      --surface-2: #1C2B23;
+      --ink: #F0EEE4;
+      --muted: #93A79A;
+      --primary: #3FA579;
+      --primary-ink: #06140E;
+      --primary-light: #1B2E24;
+      --accent: #EFB456;
+      --accent-ink: #241500;
+      --border: #263A30;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1712;
+    --surface: #16241E;
+    --surface-2: #1C2B23;
+    --ink: #F0EEE4;
+    --muted: #93A79A;
+    --primary: #3FA579;
+    --primary-ink: #06140E;
+    --primary-light: #1B2E24;
+    --accent: #EFB456;
+    --accent-ink: #241500;
+    --border: #263A30;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 20px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+  }
+  #app {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100%;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  h1, h2, h3, .serif { font-family: "Noto Serif Bengali", "Hind Siliguri", serif; }
+
+  /* Header */
+  header.top {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--primary);
+    color: var(--primary-ink);
+    padding: calc(env(safe-area-inset-top,0px) + 14px) 18px 14px;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  header.top .brand { display:flex; align-items:center; gap:8px; }
+  header.top .brand .mark {
+    width: 34px; height: 34px; border-radius: 9px; background: var(--accent);
+    display:flex; align-items:center; justify-content:center; color: var(--accent-ink); flex-shrink:0;
+  }
+  header.top h1 { font-size: 19px; margin:0; font-weight:600; letter-spacing:0.2px; }
+  header.top .sub { font-size:11px; opacity:0.75; margin-top:1px; }
+  .area-pill {
+    display:flex; align-items:center; gap:6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 7px 12px; border-radius: 999px; font-size: 13px; color: var(--primary-ink);
+  }
+  .area-pill select {
+    background: transparent; color: inherit; border: none; font-family: inherit; font-size: 13px;
+  }
+  .area-pill select option { color: #111; }
+
+  main { flex: 1; padding: 16px 18px 96px; }
+  .view { display:none; }
+  .view.active { display:block; animation: fade .25s ease; }
+  @keyframes fade { from { opacity:0; transform: translateY(4px);} to {opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce) { .view.active { animation: none; } }
+
+  section + section { margin-top: 26px; }
+  .section-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom: 12px; }
+  .section-head h2 { font-size: 16px; margin:0; font-weight:600; }
+  .section-head .note { font-size:12px; color: var(--muted); }
+
+  /* category grid */
+  .cat-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .cat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-m);
+    padding: 12px 6px 10px; text-align:center; cursor:pointer; transition: transform .12s ease, border-color .12s ease;
+  }
+  .cat-card:active { transform: scale(0.96); }
+  .cat-card:hover { border-color: var(--primary); }
+  .cat-card .icn { width:34px; height:34px; margin: 0 auto 8px; color: var(--primary); }
+  .cat-card .lbl { font-size: 11.5px; line-height:1.3; color: var(--ink); }
+
+  /* provider cards */
+  .prov-card {
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-m);
+    padding: 14px; display:flex; gap:12px; margin-bottom:10px; box-shadow: var(--shadow);
+  }
+  .avatar {
+    width:52px; height:52px; border-radius: 14px; flex-shrink:0;
+    background: var(--primary-light); color: var(--primary);
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:18px;
+  }
+  .prov-info { flex:1; min-width:0; }
+  .prov-info .name-row { display:flex; align-items:center; gap:6px; }
+  .prov-info .name { font-weight:600; font-size:15px; }
+  .badge-verified { color: var(--success); font-size:11px; display:flex; align-items:center; gap:2px; }
+  .prov-meta { font-size:12px; color: var(--muted); margin-top:2px; }
+  .prov-bottom { display:flex; align-items:center; justify-content:space-between; margin-top:8px; }
+  .price-tag { font-weight:600; font-size:14px; }
+  .price-strike { text-decoration: line-through; color: var(--muted); font-weight:400; font-size:12px; margin-right:5px; }
+  .rating { display:flex; align-items:center; gap:4px; font-size:12.5px; color: var(--ink); }
+  .rating svg { width:13px; height:13px; color: var(--accent); }
+
+  button { font-family: inherit; cursor:pointer; }
+  .btn {
+    border:none; border-radius: var(--radius-s); padding: 9px 16px; font-size: 13.5px; font-weight:600;
+  }
+  .btn-primary { background: var(--primary); color: var(--primary-ink); }
+  .btn-accent { background: var(--accent); color: var(--accent-ink); }
+  .btn-ghost { background: var(--surface-2); color: var(--ink); border:1px solid var(--border); }
+  .btn-danger { background: transparent; color: var(--danger); border:1px solid var(--danger); }
+  .btn-block { width:100%; padding: 13px; font-size:15px; }
+  .btn:disabled { opacity:.5; cursor:not-allowed; }
+
+  /* bottom nav */
+  nav.bottom {
+    position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+    width:100%; max-width:480px;
+    background: var(--surface); border-top: 1px solid var(--border);
+    display:flex; padding: 8px 6px calc(env(safe-area-inset-bottom,0px) + 8px);
+    z-index: 20;
+  }
+  nav.bottom button {
+    flex:1; background:none; border:none; display:flex; flex-direction:column; align-items:center; gap:3px;
+    color: var(--muted); font-size: 10.5px; padding:6px 2px; border-radius: var(--radius-s);
+  }
+  nav.bottom button.active { color: var(--primary); }
+  nav.bottom svg { width:21px; height:21px; }
+
+  /* empty state */
+  .empty { text-align:center; padding: 30px 10px; color: var(--muted); }
+  .empty svg { width:40px; height:40px; margin-bottom:10px; color: var(--border); }
+  .empty p { margin:4px 0 0; font-size: 13px; }
+
+  /* booking card in list */
+  .booking-card {
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-m);
+    padding: 14px; margin-bottom: 10px;
+  }
+  .booking-card .top-row { display:flex; justify-content:space-between; align-items:flex-start; }
+  .status-chip { font-size:11px; padding: 3px 9px; border-radius: 999px; font-weight:600; white-space:nowrap; }
+  .status-pending { background:#FCEFD8; color:#8A5A0A; }
+  .status-accepted { background:#DCEFE3; color: var(--success); }
+  .status-rejected { background:#FBE3E1; color: var(--danger); }
+  .status-completed { background: var(--primary-light); color: var(--primary); }
+  :root[data-theme="dark"] .status-pending, :root:not([data-theme="light"]) .status-pending { background:#3A2E10; color:#F0C978; }
+  .booking-detail { font-size:12.5px; color: var(--muted); margin-top:6px; line-height:1.6; }
+  .booking-actions { display:flex; gap:8px; margin-top:10px; }
+
+  /* subscription cards */
+  .plan-card {
+    border-radius: var(--radius-l); padding: 20px; margin-bottom: 14px; position:relative; overflow:hidden;
+    border: 1px solid var(--border); background: var(--surface);
+  }
+  .plan-card.premium { background: linear-gradient(155deg, var(--primary) 0%, #123B2C 100%); color: #fff; border:none; }
+  .plan-card .ptitle { font-size: 17px; font-weight:600; margin:0 0 4px; }
+  .plan-card .pprice { font-size: 26px; font-weight:700; margin: 6px 0 12px; }
+  .plan-card .pprice span { font-size:13px; font-weight:400; opacity:.75; }
+  .plan-card ul { list-style:none; padding:0; margin: 0 0 16px; font-size:13px; line-height:2; }
+  .plan-card ul li { display:flex; gap:8px; align-items:flex-start; }
+  .plan-card ul li svg { width:15px; height:15px; flex-shrink:0; margin-top:3px; }
+  .plan-card.premium ul li svg { color: var(--accent); }
+  .plan-card:not(.premium) ul li svg { color: var(--primary); }
+
+  /* modal */
+  .overlay {
+    position: fixed; inset:0; background: rgba(10,15,12,0.55); z-index: 40;
+    display:flex; align-items:flex-end; justify-content:center;
+  }
+  .sheet {
+    width:100%; max-width:480px; background: var(--surface); border-radius: 22px 22px 0 0;
+    padding: 18px 18px calc(env(safe-area-inset-bottom,0px) + 18px);
+    max-height: 88vh; overflow-y: auto;
+    animation: slideup .22s ease;
+  }
+  @keyframes slideup { from { transform: translateY(16px); opacity:0; } to { transform:none; opacity:1; } }
+  .sheet-handle { width:36px; height:4px; background: var(--border); border-radius:99px; margin: 0 auto 14px; }
+  .sheet h3 { margin: 0 0 14px; font-size:17px; }
+  .field { margin-bottom: 12px; }
+  .field label { display:block; font-size:12px; color: var(--muted); margin-bottom:5px; }
+  .field input, .field select, .field textarea {
+    width:100%; padding: 11px 12px; border-radius: var(--radius-s); border:1px solid var(--border);
+    background: var(--bg); color: var(--ink); font-family:inherit; font-size:14px;
+  }
+  .field textarea { resize:vertical; min-height:60px; }
+  .pay-options { display:flex; gap:8px; }
+  .pay-opt {
+    flex:1; border:1px solid var(--border); border-radius: var(--radius-s); padding: 10px 6px;
+    text-align:center; font-size:12.5px; background: var(--surface-2);
+  }
+  .pay-opt.selected { border-color: var(--primary); background: var(--primary-light); color: var(--primary); font-weight:600; }
+  .summary-row { display:flex; justify-content:space-between; font-size:13.5px; padding: 5px 0; }
+  .summary-row.total { font-weight:700; font-size:15px; border-top:1px dashed var(--border); margin-top:6px; padding-top:10px; }
+  .toast {
+    position: fixed; bottom: 90px; left:50%; transform: translateX(-50%);
+    background: var(--ink); color: var(--bg); padding: 11px 18px; border-radius: 999px;
+    font-size:13px; z-index:60; box-shadow: var(--shadow); max-width: 90%; text-align:center;
+  }
+  .banner {
+    background: var(--primary-light); color: var(--primary); border-radius: var(--radius-m);
+    padding: 12px 14px; font-size:12.5px; display:flex; gap:10px; align-items:flex-start; margin-bottom:16px;
+  }
+  .banner svg { width:16px; height:16px; flex-shrink:0; margin-top:1px; }
+  .provider-select { display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 16px; }
+  .provider-chip {
+    padding: 8px 13px; border-radius: 999px; border:1px solid var(--border); font-size:12.5px; background: var(--surface);
+  }
+  .provider-chip.selected { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+  .earn-card {
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius-m);
+    padding: 16px; text-align:center; margin-bottom: 16px;
+  }
+  .earn-card .num { font-size: 26px; font-weight:700; color: var(--primary); }
+  .earn-card .lbl { font-size:12px; color: var(--muted); margin-top:2px; }
+  .disclaimer { font-size: 11px; color: var(--muted); text-align:center; margin-top: 18px; line-height:1.6; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header class="top">
+    <div class="brand">
+      <div class="mark">
+        <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 2L3 7v6c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <h1>সেবাঘর</h1>
+        <div class="sub">বিশ্বস্ত হোম সার্ভিস, এক ট্যাপে</div>
+      </div>
+    </div>
+    <div class="area-pill">
+      <svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="2"/></svg>
+      <select id="areaSelect"></select>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME VIEW -->
+    <div class="view active" id="view-home">
+      <div class="banner" id="subBanner" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        <span>আপনি <b>প্রিমিয়াম</b> সদস্য — প্রতিটি বুকিং-এ ২০% ছাড় প্রযোজ্য হচ্ছে।</span>
+      </div>
+      <section>
+        <div class="section-head"><h2>কোন সার্ভিস লাগবে?</h2></div>
+        <div class="cat-grid" id="catGrid"></div>
+      </section>
+      <section id="providerSection" style="display:none;">
+        <div class="section-head">
+          <h2 id="provSectionTitle">প্রোভাইডার</h2>
+          <span class="note" id="provAreaNote"></span>
+        </div>
+        <div id="providerList"></div>
+      </section>
+    </div>
+
+    <!-- BOOKINGS VIEW -->
+    <div class="view" id="view-bookings">
+      <div class="section-head"><h2>আমার বুকিং</h2></div>
+      <div id="bookingList"></div>
+    </div>
+
+    <!-- SUBSCRIPTION VIEW -->
+    <div class="view" id="view-sub">
+      <div class="section-head"><h2>সাবস্ক্রিপশন প্ল্যান</h2></div>
+      <div class="plan-card" id="planBasic">
+        <p class="ptitle">বেসিক</p>
+        <p class="pprice">৳০ <span>/ চিরস্থায়ী</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> সব ক্যাটাগরির সার্ভিস বুক করুন</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> রেটিং ও রিভিউ দেখুন</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> স্ট্যান্ডার্ড বুকিং সাপোর্ট</li>
+        </ul>
+        <button class="btn btn-ghost btn-block" id="btnBasic">বর্তমান প্ল্যান</button>
+      </div>
+      <div class="plan-card premium">
+        <p class="ptitle">প্রিমিয়াম</p>
+        <p class="pprice">৳১৯৯ <span>/ মাস</span></p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> প্রতিটি বুকিং-এ ২০% ছাড়</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> প্রায়োরিটি বুকিং কনফার্মেশন</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg> ২৪/৭ কাস্টমার সাপোর্ট</li>
+        </ul>
+        <button class="btn btn-accent btn-block" id="btnPremium">প্রিমিয়াম নিন</button>
+      </div>
+      <p class="disclaimer">এটি একটি ডেমো সাবস্ক্রিপশন — বাস্তব পেমেন্ট কাটা হবে না।</p>
+    </div>
+
+    <!-- PROVIDER MODE VIEW -->
+    <div class="view" id="view-provider">
+      <div class="section-head"><h2>প্রোভাইডার ড্যাশবোর্ড</h2></div>
+      <p class="note" style="color:var(--muted); font-size:12.5px; margin-top:-6px; margin-bottom:14px;">ডেমোর জন্য নিচে থেকে একজন প্রোভাইডার নির্বাচন করুন — তার আসা বুকিং রিকোয়েস্ট এখানে দেখবেন।</p>
+      <div class="provider-select" id="provSelectChips"></div>
+      <div id="providerDash"></div>
+    </div>
+  </main>
+
+  <nav class="bottom">
+    <button data-view="home" class="active">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 11.5L12 4l8 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9a1 1 0 001 1h4v-5h2v5h4a1 1 0 001-1v-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      হোম
+    </button>
+    <button data-view="bookings">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 10h16M9 3v4M15 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      বুকিং
+    </button>
+    <button data-view="sub">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17l-5.5 4L8 13.5 3 9l6.5-.5L12 2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      সাবস্ক্রিপশন
+    </button>
+    <button data-view="provider">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      প্রোভাইডার মোড
+    </button>
+  </nav>
+
+  <button id="installBtn" style="display:none; position:fixed; bottom:78px; left:50%; transform:translateX(-50%); z-index:25; background:var(--accent); color:var(--accent-ink); border:none; padding:10px 18px; border-radius:999px; font-weight:600; font-size:13px; box-shadow:var(--shadow); align-items:center; gap:7px;">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px; margin-right:5px;"><path d="M12 3v13m0 0l-5-5m5 5l5-5M5 21h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    অ্যাপ ইনস্টল করুন
+  </button>
+
+</div>
+
+<script>
+  // ---- PWA: service worker + install prompt ----
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("sw.js").catch(function(e){ console.warn("SW register failed", e); });
+    });
+  }
+  var deferredInstallPrompt = null;
+  window.addEventListener("beforeinstallprompt", function(e){
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    var btn = document.getElementById("installBtn");
+    btn.style.display = "flex";
+    btn.onclick = function(){
+      btn.style.display = "none";
+      deferredInstallPrompt.prompt();
+      deferredInstallPrompt.userChoice.then(function(){ deferredInstallPrompt = null; });
+    };
+  });
+  window.addEventListener("appinstalled", function(){
+    document.getElementById("installBtn").style.display = "none";
+  });
+</script>
+<script>
+(function(){
+  "use strict";
+
+  // ---------- constants ----------
+  var CATEGORIES = [
+    { id:"electrician", name:"ইলেকট্রিশিয়ান" },
+    { id:"plumber", name:"প্লাম্বার" },
+    { id:"ac", name:"এসি সার্ভিসিং" },
+    { id:"cleaning", name:"ক্লিনিং" },
+    { id:"tutor", name:"টিউটর" },
+    { id:"beautician", name:"বিউটিশিয়ান" },
+    { id:"painter", name:"পেইন্টার" },
+    { id:"appliance", name:"অ্যাপ্লায়েন্স রিপেয়ার" }
+  ];
+  var AREAS = ["ঢাকা","চট্টগ্রাম","সিলেট","রাজশাহী","খুলনা","বরিশাল"];
+  var ICON_PATHS = {
+    electrician: '<path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+    plumber: '<path d="M7 3h6v5a4 4 0 004 4h1v9H10v-6H7a3 3 0 01-3-3V7a4 4 0 014-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+    ac: '<rect x="3" y="7" width="18" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M6 17v2M10 17v3M14 17v2M18 17v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    cleaning: '<path d="M9 3l3 3-9 9 3 3 9-9 3 3-1.5 6-6 1.5-1-1M15 6l3 3" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',
+    tutor: '<path d="M12 4L3 8l9 4 9-4-9-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M6 10v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" stroke="currentColor" stroke-width="1.8"/>',
+    beautician: '<circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+    painter: '<path d="M4 21l4-1 10-10-3-3L5 17l-1 4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 6l3-3 3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+    appliance: '<rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="14" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M8 7h.01M11 7h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>'
+  };
+  var SEED_PROVIDERS = [
+    { name:"মোঃ রফিকুল ইসলাম", category:"electrician", area:"ঢাকা", loc:"ধানমন্ডি", price:400, rating:4.8, jobs:212, exp:"৮ বছরের অভিজ্ঞতা", verified:true },
+    { name:"আব্দুল করিম", category:"electrician", area:"ঢাকা", loc:"মিরপুর", price:350, rating:4.6, jobs:154, exp:"৫ বছরের অভিজ্ঞতা", verified:true },
+    { name:"সুমন মিয়া", category:"plumber", area:"ঢাকা", loc:"গুলশান", price:450, rating:4.7, jobs:189, exp:"৭ বছরের অভিজ্ঞতা", verified:true },
+    { name:"জাহাঙ্গীর আলম", category:"plumber", area:"চট্টগ্রাম", loc:"আগ্রাবাদ", price:400, rating:4.5, jobs:98, exp:"৪ বছরের অভিজ্ঞতা", verified:false },
+    { name:"রাসেল টেকনিশিয়ান", category:"ac", area:"ঢাকা", loc:"উত্তরা", price:600, rating:4.9, jobs:301, exp:"১০ বছরের অভিজ্ঞতা", verified:true },
+    { name:"শাকিল সার্ভিস সেন্টার", category:"ac", area:"সিলেট", loc:"জিন্দাবাজার", price:550, rating:4.4, jobs:76, exp:"৩ বছরের অভিজ্ঞতা", verified:false },
+    { name:"ফারজানা ক্লিনিং কেয়ার", category:"cleaning", area:"ঢাকা", loc:"বনানী", price:800, rating:4.8, jobs:167, exp:"হোম ও অফিস ক্লিনিং", verified:true },
+    { name:"শাহীন হোম কেয়ার", category:"cleaning", area:"রাজশাহী", loc:"সাহেববাজার", price:650, rating:4.3, jobs:54, exp:"হোম ক্লিনিং স্পেশালিস্ট", verified:false },
+    { name:"নুসরাত জাহান (গণিত)", category:"tutor", area:"ঢাকা", loc:"ধানমন্ডি", price:1200, rating:4.9, jobs:88, exp:"এসএসসি ও এইচএসসি গণিত", verified:true },
+    { name:"তানভীর আহমেদ (ইংরেজি)", category:"tutor", area:"খুলনা", loc:"খালিশপুর", price:1000, rating:4.6, jobs:63, exp:"স্পোকেন ও লিখিত ইংরেজি", verified:true },
+    { name:"রুমা বিউটি পার্লার", category:"beautician", area:"ঢাকা", loc:"মোহাম্মদপুর", price:900, rating:4.7, jobs:143, exp:"হোম সার্ভিস ব্রাইডাল মেকআপ", verified:true },
+    { name:"শিল্পী আক্তার", category:"beautician", area:"চট্টগ্রাম", loc:"নাসিরাবাদ", price:700, rating:4.5, jobs:71, exp:"হেয়ার ও স্কিন কেয়ার", verified:false },
+    { name:"বাবুল পেইন্ট হাউজ", category:"painter", area:"ঢাকা", loc:"বাড্ডা", price:1500, rating:4.6, jobs:112, exp:"ইনডোর ও আউটডোর পেইন্টিং", verified:true },
+    { name:"ইলিয়াস অ্যাপ্লায়েন্স", category:"appliance", area:"ঢাকা", loc:"যাত্রাবাড়ী", price:350, rating:4.4, jobs:97, exp:"ফ্রিজ, ওয়াশিং মেশিন, ওভেন", verified:false },
+    { name:"হাসান অ্যাপ্লায়েন্স কেয়ার", category:"appliance", area:"সিলেট", loc:"আম্বরখানা", price:380, rating:4.7, jobs:65, exp:"টিভি, ফ্রিজ, এসি মেরামত", verified:true }
+  ];
+
+  // ---------- Firebase config ----------
+  // ⚠️ এখানে আপনার নিজের Firebase প্রজেক্টের কনফিগ বসান।
+  // Firebase Console → Project settings → General → "Your apps" → Web app → SDK setup and configuration
+  var firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // ---------- state ----------
+  var db = null, authInst = null;
+  var myId = null, myName = "অতিথি ইউজার";
+  var currentView = "home";
+  var selectedArea = AREAS[0];
+  var selectedCategory = null;
+  var mySubscription = { plan: "basic" };
+  var myBookings = [];
+  var allProviders = [];
+  var unsubBookings = null;
+  var pendingBookingProvider = null;
+  var providerModeSelection = null;
+  var providerDashUnsub = null;
+
+  // ---------- helpers ----------
+  function $(sel){ return document.querySelector(sel); }
+  function $all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+  function toast(msg){
+    var t = document.createElement("div");
+    t.className = "toast";
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(function(){ t.remove(); }, 2400);
+  }
+  function catName(id){ var c = CATEGORIES.filter(function(c){return c.id===id;})[0]; return c ? c.name : id; }
+  function initials(name){ return (name||"?").trim().charAt(0); }
+  function fmtMoney(n){ return "৳" + Math.round(n).toLocaleString("en-US"); }
+  function todayISO(){ var d = new Date(); return d.toISOString().slice(0,10); }
+  function statusLabel(s){
+    return { pending:"অপেক্ষমাণ", accepted:"গৃহীত", rejected:"বাতিল", completed:"সম্পন্ন" }[s] || s;
+  }
+
+  // ---------- init Firebase ----------
+  function initCapabilities(){
+    return new Promise(function(resolve){
+      try {
+        if (firebaseConfig.apiKey === "YOUR_API_KEY") {
+          console.warn("Firebase কনফিগ বসানো হয়নি — অ্যাপ অফলাইন/ডেমো মোডে চলছে।");
+          db = null; resolve(); return;
+        }
+        firebase.initializeApp(firebaseConfig);
+        db = firebase.firestore();
+        authInst = firebase.auth();
+        authInst.onAuthStateChanged(function(user){
+          if (user) {
+            myId = user.uid;
+            myName = "গ্রাহক " + user.uid.slice(0,5);
+            resolve();
+          }
+        });
+        authInst.signInAnonymously().catch(function(err){
+          console.error("Anonymous sign-in failed:", err);
+          db = null;
+          if (!myId) { myId = "guest_" + Math.random().toString(36).slice(2,10); }
+          resolve();
+        });
+      } catch(e){
+        console.error(e); db = null;
+        if (!myId) { myId = "guest_" + Math.random().toString(36).slice(2,10); }
+        resolve();
+      }
+    });
+  }
+
+  // ---------- seeding ----------
+  async function ensureSeeded(){
+    if (!db) { allProviders = SEED_PROVIDERS.map(function(p,i){ p.id="local_"+i; return p; }); return; }
+    try {
+      var snap = await db.collection("providers").limit(1).get();
+      if (snap.empty) {
+        for (var i=0;i<SEED_PROVIDERS.length;i++){
+          await db.collection("providers").doc("p"+i).set(SEED_PROVIDERS[i]);
+        }
+      }
+      var full = await db.collection("providers").limit(200).get();
+      allProviders = full.docs.map(function(d){ var data = d.data(); data.id = d.id; return data; });
+    } catch(e){
+      console.error("seed error", e);
+      allProviders = SEED_PROVIDERS.map(function(p,i){ p.id="local_"+i; return p; });
+    }
+  }
+
+  // ---------- subscription load ----------
+  function loadSubscription(){
+    if (!db) return;
+    try {
+      var ref = db.collection("users").doc(myId).collection("meta").doc("subscription");
+      ref.onSnapshot(function(snap){
+        mySubscription = snap.exists ? snap.data() : { plan: "basic" };
+        renderSubBanner();
+        renderSubView();
+      }, function(err){ console.warn("sub snapshot error", err); });
+    } catch(e){}
+  }
+
+  async function setSubscription(plan){
+    mySubscription = { plan: plan, updatedAt: Date.now() };
+    renderSubBanner();
+    renderSubView();
+    if (!db) { toast(plan === "premium" ? "প্রিমিয়াম চালু হয়েছে (ডেমো — Firebase কনফিগ যোগ করুন)" : "বেসিক প্ল্যানে ফিরে গেছেন"); return; }
+    try {
+      await db.collection("users").doc(myId).collection("meta").doc("subscription").set(mySubscription);
+      toast(plan === "premium" ? "প্রিমিয়াম চালু হয়েছে — ২০% ছাড় সক্রিয়" : "বেসিক প্ল্যানে ফিরে গেছেন");
+    } catch(e){ toast("সংরক্ষণে সমস্যা হয়েছে"); }
+  }
+
+  // ---------- bookings ----------
+  function subscribeMyBookings(){
+    if (!db) { renderBookings(); return; }
+    try {
+      var q = db.collection("bookings").where("userId","==",myId).limit(100);
+      unsubBookings = q.onSnapshot(function(snap){
+        myBookings = snap.docs.map(function(d){ var v = d.data(); v.id = d.id; return v; });
+        myBookings.sort(function(a,b){ return (b.createdAt||0)-(a.createdAt||0); });
+        renderBookings();
+      }, function(err){ console.warn("bookings snapshot error", err); });
+    } catch(e){ renderBookings(); }
+  }
+
+  async function createBooking(payload){
+    payload.userId = myId;
+    payload.userName = myName;
+    payload.status = "pending";
+    payload.createdAt = Date.now();
+    if (!db) {
+      myBookings.unshift(Object.assign({ id: "local_" + Date.now() }, payload));
+      renderBookings();
+      return;
+    }
+    try {
+      await db.collection("bookings").add(payload);
+    } catch(e){
+      toast("বুকিং সংরক্ষণে সমস্যা হয়েছে, আবার চেষ্টা করুন");
+      throw e;
+    }
+  }
+
+  async function cancelBooking(id){
+    if (!db) {
+      myBookings = myBookings.filter(function(b){ return b.id !== id; });
+      renderBookings();
+      return;
+    }
+    try {
+      await db.collection("bookings").doc(id).delete();
+      toast("বুকিং বাতিল করা হয়েছে");
+    } catch(e){ toast("বাতিল করা যায়নি"); }
+  }
+
+  async function updateBookingStatus(id, status){
+    if (!db) {
+      var b = myBookings.filter(function(x){return x.id===id;})[0];
+      if (b) b.status = status;
+      renderProviderDash();
+      return;
+    }
+    try {
+      await db.collection("bookings").doc(id).update({ status: status });
+      toast(status === "accepted" ? "বুকিং গ্রহণ করা হয়েছে" : status === "rejected" ? "বুকিং প্রত্যাখ্যান করা হয়েছে" : "কাজ সম্পন্ন হিসেবে চিহ্নিত হয়েছে");
+    } catch(e){ toast("আপডেট করা যায়নি"); }
+  }
+
+  // ---------- render: header/area ----------
+  function renderAreaSelect(){
+    var sel = $("#areaSelect");
+    sel.innerHTML = AREAS.map(function(a){ return '<option value="'+a+'"'+(a===selectedArea?' selected':'')+'>'+a+'</option>'; }).join("");
+    sel.onchange = function(){ selectedArea = sel.value; if (selectedCategory) renderProviderList(); };
+  }
+
+  // ---------- render: categories ----------
+  function renderCategories(){
+    var grid = $("#catGrid");
+    grid.innerHTML = CATEGORIES.map(function(c){
+      return '<div class="cat-card" data-cat="'+c.id+'">' +
+        '<svg class="icn" viewBox="0 0 24 24" fill="none">'+ICON_PATHS[c.id]+'</svg>' +
+        '<div class="lbl">'+c.name+'</div></div>';
+    }).join("");
+    $all(".cat-card").forEach(function(el){
+      el.onclick = function(){
+        selectedCategory = el.getAttribute("data-cat");
+        $all(".cat-card").forEach(function(x){ x.style.borderColor = ""; x.style.background=""; });
+        el.style.borderColor = "var(--primary)";
+        renderProviderList();
+      };
+    });
+  }
+
+  function renderProviderList(){
+    var sec = $("#providerSection");
+    sec.style.display = "block";
+    $("#provSectionTitle").textContent = catName(selectedCategory) + " প্রোভাইডার";
+    $("#provAreaNote").textContent = selectedArea;
+    var list = allProviders.filter(function(p){ return p.category === selectedCategory && p.area === selectedArea; });
+    var wrap = $("#providerList");
+    if (list.length === 0){
+      wrap.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><p>এই এলাকায় এই মুহূর্তে কোনো প্রোভাইডার নেই।<br>অন্য এলাকা বেছে দেখুন।</p></div>';
+      return;
+    }
+    var discount = mySubscription.plan === "premium" ? 0.8 : 1;
+    wrap.innerHTML = list.map(function(p){
+      var finalPrice = Math.round(p.price * discount);
+      return '<div class="prov-card" data-pid="'+p.id+'">' +
+        '<div class="avatar">'+initials(p.name)+'</div>' +
+        '<div class="prov-info">' +
+          '<div class="name-row"><span class="name">'+p.name+'</span>' + (p.verified ? '<span class="badge-verified"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ভেরিফাইড</span>' : '') + '</div>' +
+          '<div class="prov-meta">'+p.loc+' • '+p.exp+' • '+p.jobs+'+ কাজ</div>' +
+          '<div class="prov-bottom">' +
+            '<span class="price-tag">' + (discount<1 ? '<span class="price-strike">'+fmtMoney(p.price)+'</span>' : '') + fmtMoney(finalPrice) + ' থেকে</span>' +
+            '<span class="rating"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.2 4.7 1.5 6.8L12 17l-6.1 3.5 1.5-6.8L2.2 9l6.9-.7L12 2z"/></svg>'+p.rating+'</span>' +
+          '</div>' +
+        '</div></div>';
+    }).join("");
+    $all(".prov-card").forEach(function(el){
+      el.onclick = function(){ openBookingModal(el.getAttribute("data-pid")); };
+    });
+  }
+
+  // ---------- booking modal ----------
+  function openBookingModal(pid){
+    var p = allProviders.filter(function(x){return x.id===pid;})[0];
+    if (!p) return;
+    pendingBookingProvider = p;
+    var discount = mySubscription.plan === "premium" ? 0.8 : 1;
+    var finalPrice = Math.round(p.price * discount);
+    var overlay = document.createElement("div");
+    overlay.className = "overlay";
+    overlay.id = "bookingOverlay";
+    overlay.innerHTML =
+      '<div class="sheet"><div class="sheet-handle"></div>' +
+      '<h3>'+p.name+' — বুকিং করুন</h3>' +
+      '<div class="field"><label>তারিখ</label><input type="date" id="bkDate" min="'+todayISO()+'" value="'+todayISO()+'"></div>' +
+      '<div class="field"><label>সময়</label><select id="bkTime">' +
+        ['সকাল ৯টা - ১১টা','দুপুর ১২টা - ২টা','বিকাল ৩টা - ৫টা','সন্ধ্যা ৬টা - ৮টা'].map(function(t){return '<option>'+t+'</option>';}).join("") +
+      '</select></div>' +
+      '<div class="field"><label>সম্পূর্ণ ঠিকানা</label><textarea id="bkAddress" placeholder="বাসা/ফ্ল্যাট নম্বর, রোড, এলাকা"></textarea></div>' +
+      '<div class="field"><label>মোবাইল নম্বর</label><input type="tel" id="bkPhone" placeholder="01XXXXXXXXX"></div>' +
+      '<div class="field"><label>পেমেন্ট পদ্ধতি</label>' +
+        '<div class="pay-options">' +
+          '<div class="pay-opt selected" data-pay="cash">ক্যাশ অন সার্ভিস</div>' +
+          '<div class="pay-opt" data-pay="bkash">bKash</div>' +
+          '<div class="pay-opt" data-pay="nagad">Nagad</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="summary-row"><span>সার্ভিস চার্জ</span><span>'+ (discount<1 ? '<span class="price-strike">'+fmtMoney(p.price)+'</span> ' : '') + fmtMoney(finalPrice)+'</span></div>' +
+      (discount<1 ? '<div class="summary-row" style="color:var(--success)"><span>প্রিমিয়াম ছাড় (২০%)</span><span>-'+fmtMoney(p.price-finalPrice)+'</span></div>' : '') +
+      '<div class="summary-row total"><span>সর্বমোট (আনুমানিক)</span><span>'+fmtMoney(finalPrice)+'</span></div>' +
+      '<div style="height:14px;"></div>' +
+      '<button class="btn btn-primary btn-block" id="confirmBookingBtn">বুকিং নিশ্চিত করুন</button>' +
+      '<button class="btn btn-ghost btn-block" id="cancelBookingBtn" style="margin-top:8px;">বাতিল</button>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    var selectedPay = "cash";
+    overlay.querySelectorAll(".pay-opt").forEach(function(el){
+      el.onclick = function(){
+        overlay.querySelectorAll(".pay-opt").forEach(function(x){x.classList.remove("selected");});
+        el.classList.add("selected");
+        selectedPay = el.getAttribute("data-pay");
+      };
+    });
+    overlay.querySelector("#cancelBookingBtn").onclick = function(){ overlay.remove(); };
+    overlay.onclick = function(e){ if (e.target === overlay) overlay.remove(); };
+    overlay.querySelector("#confirmBookingBtn").onclick = async function(){
+      var address = overlay.querySelector("#bkAddress").value.trim();
+      var phone = overlay.querySelector("#bkPhone").value.trim();
+      if (!address || !phone){ toast("ঠিকানা ও মোবাইল নম্বর দিন"); return; }
+      var btn = overlay.querySelector("#confirmBookingBtn");
+      btn.disabled = true; btn.textContent = "প্রসেস হচ্ছে...";
+      try {
+        await createBooking({
+          providerId: p.id, providerName: p.name, category: p.category,
+          area: selectedArea, date: overlay.querySelector("#bkDate").value,
+          time: overlay.querySelector("#bkTime").value, address: address, phone: phone,
+          payment: selectedPay, price: finalPrice, originalPrice: p.price,
+          subscriptionApplied: discount < 1
+        });
+        overlay.remove();
+        toast("বুকিং সফল হয়েছে! 'আমার বুকিং' ট্যাবে দেখুন।");
+        switchView("bookings");
+      } catch(e){
+        btn.disabled = false; btn.textContent = "বুকিং নিশ্চিত করুন";
+      }
+    };
+  }
+
+  // ---------- render: bookings ----------
+  function renderBookings(){
+    var wrap = $("#bookingList");
+    if (!myBookings.length){
+      wrap.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 10h16" stroke="currentColor" stroke-width="2"/></svg><p>এখনো কোনো বুকিং নেই।<br>হোম থেকে সার্ভিস বেছে বুকিং করুন।</p></div>';
+      return;
+    }
+    wrap.innerHTML = myBookings.map(function(b){
+      return '<div class="booking-card">' +
+        '<div class="top-row"><div><strong>'+b.providerName+'</strong><div class="prov-meta">'+catName(b.category)+'</div></div>' +
+        '<span class="status-chip status-'+b.status+'">'+statusLabel(b.status)+'</span></div>' +
+        '<div class="booking-detail">' +
+          '📅 '+b.date+' • '+b.time+'<br>' +
+          '📍 '+b.address+', '+b.area+'<br>' +
+          '💳 '+ (b.payment==='cash'?'ক্যাশ অন সার্ভিস':b.payment==='bkash'?'bKash':'Nagad') + ' • '+fmtMoney(b.price) +
+        '</div>' +
+        (b.status === "pending" ? '<div class="booking-actions"><button class="btn btn-danger" data-cancel="'+b.id+'" style="flex:1;">বাতিল করুন</button></div>' : '') +
+        '</div>';
+    }).join("");
+    wrap.querySelectorAll("[data-cancel]").forEach(function(el){
+      el.onclick = function(){ cancelBooking(el.getAttribute("data-cancel")); };
+    });
+  }
+
+  // ---------- render: subscription ----------
+  function renderSubBanner(){
+    $("#subBanner").style.display = mySubscription.plan === "premium" ? "flex" : "none";
+  }
+  function renderSubView(){
+    var isPremium = mySubscription.plan === "premium";
+    $("#btnBasic").textContent = isPremium ? "বেসিকে ফিরে যান" : "বর্তমান প্ল্যান";
+    $("#btnBasic").className = "btn btn-ghost btn-block";
+    $("#btnBasic").disabled = false;
+    $("#btnPremium").textContent = isPremium ? "সক্রিয় প্ল্যান ✓" : "প্রিমিয়াম নিন";
+    $("#btnPremium").disabled = isPremium;
+    if (selectedCategory) renderProviderList();
+  }
+  $("#btnPremium").onclick = function(){ setSubscription("premium"); };
+  $("#btnBasic").onclick = function(){ if (mySubscription.plan === "premium") setSubscription("basic"); };
+
+  // ---------- provider mode ----------
+  function renderProviderChips(){
+    var wrap = $("#provSelectChips");
+    var uniqueNames = allProviders.slice(0, 8);
+    wrap.innerHTML = uniqueNames.map(function(p){
+      return '<div class="provider-chip'+(providerModeSelection && providerModeSelection.id===p.id?' selected':'')+'" data-pid="'+p.id+'">'+p.name+'</div>';
+    }).join("");
+    wrap.querySelectorAll(".provider-chip").forEach(function(el){
+      el.onclick = function(){
+        var pid = el.getAttribute("data-pid");
+        providerModeSelection = allProviders.filter(function(p){return p.id===pid;})[0];
+        renderProviderChips();
+        subscribeProviderDash();
+      };
+    });
+  }
+
+  function subscribeProviderDash(){
+    if (providerDashUnsub) { try { providerDashUnsub(); } catch(e){} providerDashUnsub = null; }
+    if (!providerModeSelection) { $("#providerDash").innerHTML = ""; return; }
+    if (!db) { renderProviderDash([]); return; }
+    try {
+      var q = db.collection("bookings").where("providerId","==",providerModeSelection.id).limit(100);
+      providerDashUnsub = q.onSnapshot(function(snap){
+        var items = snap.docs.map(function(d){ var v = d.data(); v.id = d.id; return v; });
+        items.sort(function(a,b){ return (b.createdAt||0)-(a.createdAt||0); });
+        renderProviderDash(items);
+      }, function(){ renderProviderDash([]); });
+    } catch(e){ renderProviderDash([]); }
+  }
+
+  function renderProviderDash(items){
+    items = items || [];
+    var earnings = items.filter(function(b){return b.status==="completed";}).reduce(function(s,b){return s+(b.price||0);},0);
+    var pendingCount = items.filter(function(b){return b.status==="pending";}).length;
+    var html = '<div class="earn-card"><div class="num">'+fmtMoney(earnings)+'</div><div class="lbl">মোট আয় (সম্পন্ন কাজ থেকে)</div></div>';
+    if (!items.length){
+      html += '<div class="empty"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/></svg><p>এই প্রোভাইডারের নামে এখনো কোনো বুকিং আসেনি।</p></div>';
+      $("#providerDash").innerHTML = html;
+      return;
+    }
+    html += items.map(function(b){
+      var actions = "";
+      if (b.status === "pending"){
+        actions = '<div class="booking-actions">' +
+          '<button class="btn btn-primary" data-accept="'+b.id+'" style="flex:1;">গ্রহণ করুন</button>' +
+          '<button class="btn btn-danger" data-reject="'+b.id+'" style="flex:1;">প্রত্যাখ্যান</button></div>';
+      } else if (b.status === "accepted"){
+        actions = '<div class="booking-actions"><button class="btn btn-primary" data-complete="'+b.id+'" style="flex:1;">সম্পন্ন হিসেবে চিহ্নিত করুন</button></div>';
+      }
+      return '<div class="booking-card">' +
+        '<div class="top-row"><div><strong>'+ (b.userName||"কাস্টমার") +'</strong><div class="prov-meta">'+catName(b.category)+'</div></div>' +
+        '<span class="status-chip status-'+b.status+'">'+statusLabel(b.status)+'</span></div>' +
+        '<div class="booking-detail">📅 '+b.date+' • '+b.time+'<br>📍 '+b.address+'<br>📞 '+b.phone+' • '+fmtMoney(b.price)+'</div>' +
+        actions + '</div>';
+    }).join("");
+    $("#providerDash").innerHTML = html;
+    $("#providerDash").querySelectorAll("[data-accept]").forEach(function(el){ el.onclick=function(){updateBookingStatus(el.getAttribute("data-accept"),"accepted");}; });
+    $("#providerDash").querySelectorAll("[data-reject]").forEach(function(el){ el.onclick=function(){updateBookingStatus(el.getAttribute("data-reject"),"rejected");}; });
+    $("#providerDash").querySelectorAll("[data-complete]").forEach(function(el){ el.onclick=function(){updateBookingStatus(el.getAttribute("data-complete"),"completed");}; });
+  }
+
+  // ---------- nav ----------
+  function switchView(name){
+    currentView = name;
+    $all(".view").forEach(function(v){ v.classList.remove("active"); });
+    $("#view-"+name).classList.add("active");
+    $all("nav.bottom button").forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-view")===name); });
+    if (name === "provider" && !providerModeSelection && allProviders.length){
+      providerModeSelection = allProviders[0];
+      renderProviderChips();
+      subscribeProviderDash();
+    }
+  }
+  $all("nav.bottom button").forEach(function(b){
+    b.onclick = function(){ switchView(b.getAttribute("data-view")); };
+  });
+
+  // ---------- boot ----------
+  async function boot(){
+    renderAreaSelect();
+    renderCategories();
+    await initCapabilities();
+    await ensureSeeded();
+    await loadSubscription();
+    subscribeMyBookings();
+    renderProviderChips();
+  }
+  boot();
+
+})();
+</script>
+</body>
+</html>
