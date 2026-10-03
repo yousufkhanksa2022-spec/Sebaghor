@@ -292,6 +292,9 @@
       <svg viewBox="0 0 24 24" width="13" height="13" fill="none"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="2"/></svg>
       <select id="areaSelect"></select>
     </div>
+    <button id="adminGearBtn" style="background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:999px; width:34px; height:34px; color:var(--primary-ink); flex-shrink:0;">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" style="margin:auto;"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 13a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V19a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H4a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H10a1.65 1.65 0 001-1.51V4a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V10a1.65 1.65 0 001.51 1H20a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
   </header>
 
   <main>
@@ -348,12 +351,83 @@
 
     <!-- PROVIDER MODE VIEW -->
     <div class="view" id="view-provider">
-      <div class="section-head"><h2>প্রোভাইডার ড্যাশবোর্ড</h2></div>
-      <p class="note" style="color:var(--muted); font-size:12.5px; margin-top:-6px; margin-bottom:14px;">ডেমোর জন্য নিচে থেকে একজন প্রোভাইডার নির্বাচন করুন — তার আসা বুকিং রিকোয়েস্ট এখানে দেখবেন।</p>
-      <div class="provider-select" id="provSelectChips"></div>
-      <div id="providerDash"></div>
+      <div id="techLoggedOut">
+        <div class="section-head"><h2>টেকনিশিয়ান পোর্টাল</h2></div>
+        <p class="note" style="color:var(--muted); font-size:12.5px; margin-top:-6px; margin-bottom:16px;">যদি আপনি একজন সার্ভিস প্রোভাইডার হন, এখানে লগইন বা নতুন অ্যাকাউন্ট খুলুন।</p>
+        <button class="btn btn-primary btn-block" id="techShowLogin">লগইন করুন</button>
+        <button class="btn btn-ghost btn-block" id="techShowSignup" style="margin-top:10px;">নতুন টেকনিশিয়ান? সাইন-আপ করুন</button>
+      </div>
+      <div id="techPending" style="display:none;" class="empty">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p><strong>আপনার আবেদন পর্যালোচনাধীন</strong><br>অ্যাডমিন যাচাই করার পর আপনি বুকিং দেখতে পারবেন। কিছুক্ষণ পর আবার চেক করুন।</p>
+        <button class="btn btn-ghost" id="techLogoutPending" style="margin-top:14px;">লগ আউট</button>
+      </div>
+      <div id="techRejected" style="display:none;" class="empty">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <p><strong>আপনার আবেদনটি গ্রহণ করা হয়নি।</strong><br>আরও তথ্যের জন্য আমাদের সাথে যোগাযোগ করুন।</p>
+        <button class="btn btn-ghost" id="techLogoutRejected" style="margin-top:14px;">লগ আউট</button>
+      </div>
+      <div id="techApproved" style="display:none;">
+        <div class="section-head">
+          <h2 id="techNameHeading">প্রোভাইডার ড্যাশবোর্ড</h2>
+          <span class="note" id="techLogoutApproved" style="cursor:pointer; text-decoration:underline;">লগ আউট</span>
+        </div>
+        <div id="providerDash"></div>
+      </div>
+    </div>
+
+    <!-- ADMIN VIEW -->
+    <div class="view" id="view-admin">
+      <div id="adminLoggedOut">
+        <div class="section-head"><h2>Admin লগইন</h2></div>
+        <div class="field"><label>ইমেইল</label><input type="email" id="adminEmail" placeholder="admin@example.com"></div>
+        <div class="field"><label>পাসওয়ার্ড</label><input type="password" id="adminPassword"></div>
+        <button class="btn btn-primary btn-block" id="adminLoginBtn">লগইন</button>
+      </div>
+      <div id="adminPanel" style="display:none;">
+        <div class="section-head">
+          <h2>Admin প্যানেল</h2>
+          <span class="note" id="adminLogoutBtn" style="cursor:pointer; text-decoration:underline;">লগ আউট</span>
+        </div>
+        <div class="earn-card">
+          <div class="num" id="adminTotalRevenue">৳০</div>
+          <div class="lbl">সম্পন্ন বুকিং থেকে মোট আয় (প্ল্যাটফর্মব্যাপী)</div>
+        </div>
+        <div class="section-head"><h2 style="font-size:14px;">অপেক্ষমাণ টেকনিশিয়ান আবেদন</h2></div>
+        <div id="adminPendingList"></div>
+        <div class="section-head" style="margin-top:20px;"><h2 style="font-size:14px;">অনুমোদিত টেকনিশিয়ান</h2></div>
+        <div id="adminApprovedList"></div>
+      </div>
     </div>
   </main>
+
+  <!-- TECH LOGIN / SIGNUP MODAL -->
+  <div class="overlay" id="techAuthOverlay" style="display:none;">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <div id="techLoginForm">
+        <h3>টেকনিশিয়ান লগইন</h3>
+        <div class="field"><label>ইমেইল</label><input type="email" id="techLoginEmail"></div>
+        <div class="field"><label>পাসওয়ার্ড</label><input type="password" id="techLoginPassword"></div>
+        <button class="btn btn-primary btn-block" id="techLoginSubmit">লগইন করুন</button>
+        <button class="btn btn-ghost btn-block" id="techAuthClose1" style="margin-top:8px;">বাতিল</button>
+      </div>
+      <div id="techSignupForm" style="display:none;">
+        <h3>টেকনিশিয়ান সাইন-আপ</h3>
+        <div class="field"><label>পুরো নাম</label><input type="text" id="techSName"></div>
+        <div class="field"><label>সার্ভিস ক্যাটাগরি</label><select id="techSCategory"></select></div>
+        <div class="field"><label>এলাকা (বিভাগ)</label><select id="techSArea"></select></div>
+        <div class="field"><label>সুনির্দিষ্ট লোকেশন</label><input type="text" id="techSLoc" placeholder="যেমন: মিরপুর"></div>
+        <div class="field"><label>শুরুর দাম (৳)</label><input type="number" id="techSPrice" placeholder="৪০০"></div>
+        <div class="field"><label>অভিজ্ঞতা / বিশেষত্ব</label><input type="text" id="techSExp" placeholder="যেমন: ৫ বছরের অভিজ্ঞতা"></div>
+        <div class="field"><label>ফোন নম্বর</label><input type="tel" id="techSPhone"></div>
+        <div class="field"><label>ইমেইল</label><input type="email" id="techSEmail"></div>
+        <div class="field"><label>পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</label><input type="password" id="techSPassword"></div>
+        <button class="btn btn-primary btn-block" id="techSignupSubmit">আবেদন জমা দিন</button>
+        <button class="btn btn-ghost btn-block" id="techAuthClose2" style="margin-top:8px;">বাতিল</button>
+      </div>
+    </div>
+  </div>
 
   <nav class="bottom">
     <button data-view="home" class="active">
@@ -370,7 +444,7 @@
     </button>
     <button data-view="provider">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      প্রোভাইডার মোড
+টেকনিশিয়ান
     </button>
   </nav>
 
@@ -451,15 +525,18 @@
   // ---------- Firebase config ----------
   // ⚠️ এখানে আপনার নিজের Firebase প্রজেক্টের কনফিগ বসান।
   // Firebase Console → Project settings → General → "Your apps" → Web app → SDK setup and configuration
-  const firebaseConfig = {
-  apiKey: "AIzaSyCE0Zm2nyIq4lUlDfNO2VArQ9dtTl4qDV8",
-  authDomain: "shebaghor-7a7a0.firebaseapp.com",
-  projectId: "shebaghor-7a7a0",
-  storageBucket: "shebaghor-7a7a0.firebasestorage.app",
-  messagingSenderId: "964206070180",
-  appId: "1:964206070180:web:f1687bef0fccea91315931",
-  measurementId: "G-G1ST1Q9YLR"
-};
+  var firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // ⚠️ এই ইমেইলটা দিয়েই আপনি Admin হিসেবে লগইন করবেন।
+  // নিজের একটা ইমেইল বসান এখানে, আর ঠিক এই একই ইমেইল firestore.rules ফাইলেও বসাতে হবে (দুই জায়গায় মিলতে হবে)।
+  var ADMIN_EMAIL = "YOUR_ADMIN_EMAIL@example.com";
 
   // ---------- state ----------
   var db = null, authInst = null;
@@ -472,8 +549,10 @@
   var allProviders = [];
   var unsubBookings = null;
   var pendingBookingProvider = null;
-  var providerModeSelection = null;
   var providerDashUnsub = null;
+  var myProviderDoc = null;   // লগইন করা টেকনিশিয়ানের নিজের provider ডক (id সহ)
+  var isAdmin = false;
+  var adminPendingUnsub = null, adminApprovedUnsub = null, adminBookingsUnsub = null;
 
   // ---------- helpers ----------
   function $(sel){ return document.querySelector(sel); }
@@ -496,33 +575,80 @@
   // ---------- init Firebase ----------
   function initCapabilities(){
     return new Promise(function(resolve){
+      var bootDone = false;
+      function finishBoot(){ if (!bootDone) { bootDone = true; resolve(); } }
       try {
         if (firebaseConfig.apiKey === "YOUR_API_KEY") {
           console.warn("Firebase কনফিগ বসানো হয়নি — অ্যাপ অফলাইন/ডেমো মোডে চলছে।");
-          db = null; resolve(); return;
+          db = null; finishBoot(); return;
         }
         firebase.initializeApp(firebaseConfig);
         db = firebase.firestore();
         authInst = firebase.auth();
         authInst.onAuthStateChanged(function(user){
-          if (user) {
-            myId = user.uid;
-            myName = "গ্রাহক " + user.uid.slice(0,5);
-            resolve();
-          }
+          handleAuthChange(user).then(finishBoot);
         });
         authInst.signInAnonymously().catch(function(err){
           console.error("Anonymous sign-in failed:", err);
           db = null;
           if (!myId) { myId = "guest_" + Math.random().toString(36).slice(2,10); }
-          resolve();
+          finishBoot();
         });
       } catch(e){
         console.error(e); db = null;
         if (!myId) { myId = "guest_" + Math.random().toString(36).slice(2,10); }
-        resolve();
+        finishBoot();
       }
     });
+  }
+
+  // যখনই লগইন-অবস্থা বদলায় (কাস্টমার/টেকনিশিয়ান/অ্যাডমিন) — এটাই একমাত্র জায়গা যেখানে ঠিক হয় কে কী দেখবে
+  async function handleAuthChange(user){
+    if (!user) return;
+    stopTechDashSub();
+    stopAdminSubs();
+    if (user.isAnonymous) {
+      myId = user.uid;
+      myName = "গ্রাহক " + user.uid.slice(0,5);
+      isAdmin = false;
+      myProviderDoc = null;
+      refreshTechView();
+      refreshAdminView();
+    } else if (ADMIN_EMAIL !== "YOUR_ADMIN_EMAIL@example.com" && user.email === ADMIN_EMAIL) {
+      isAdmin = true;
+      myProviderDoc = null;
+      refreshAdminView();
+    } else {
+      isAdmin = false;
+      await loadMyProviderDoc(user.uid);
+      refreshTechView();
+    }
+  }
+
+  async function loadMyProviderDoc(uid){
+    if (!db) return;
+    try {
+      var snap = await db.collection("providers").where("authUid","==",uid).limit(1).get();
+      if (!snap.empty) {
+        var d = snap.docs[0];
+        myProviderDoc = Object.assign({ id: d.id }, d.data());
+      } else {
+        myProviderDoc = null;
+      }
+    } catch(e){
+      console.error("provider doc load error", e);
+      myProviderDoc = null;
+    }
+  }
+
+  function signOutToCustomer(){
+    stopTechDashSub(); stopAdminSubs();
+    myProviderDoc = null; isAdmin = false;
+    if (!authInst) { switchView("home"); return; }
+    authInst.signOut().then(function(){
+      return authInst.signInAnonymously();
+    }).catch(function(e){ console.error(e); });
+    switchView("home");
   }
 
   // ---------- seeding ----------
@@ -653,7 +779,9 @@
     sec.style.display = "block";
     $("#provSectionTitle").textContent = catName(selectedCategory) + " প্রোভাইডার";
     $("#provAreaNote").textContent = selectedArea;
-    var list = allProviders.filter(function(p){ return p.category === selectedCategory && p.area === selectedArea; });
+    var list = allProviders.filter(function(p){
+      return p.category === selectedCategory && p.area === selectedArea && (!p.status || p.status === "approved");
+    });
     var wrap = $("#providerList");
     if (list.length === 0){
       wrap.innerHTML = '<div class="empty"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><p>এই এলাকায় এই মুহূর্তে কোনো প্রোভাইডার নেই।<br>অন্য এলাকা বেছে দেখুন।</p></div>';
@@ -731,7 +859,7 @@
       btn.disabled = true; btn.textContent = "প্রসেস হচ্ছে...";
       try {
         await createBooking({
-          providerId: p.id, providerName: p.name, category: p.category,
+          providerId: p.id, providerName: p.name, providerAuthUid: p.authUid || null, category: p.category,
           area: selectedArea, date: overlay.querySelector("#bkDate").value,
           time: overlay.querySelector("#bkTime").value, address: address, phone: phone,
           payment: selectedPay, price: finalPrice, originalPrice: p.price,
@@ -786,34 +914,117 @@
   $("#btnPremium").onclick = function(){ setSubscription("premium"); };
   $("#btnBasic").onclick = function(){ if (mySubscription.plan === "premium") setSubscription("basic"); };
 
-  // ---------- provider mode ----------
-  function renderProviderChips(){
-    var wrap = $("#provSelectChips");
-    var uniqueNames = allProviders.slice(0, 8);
-    wrap.innerHTML = uniqueNames.map(function(p){
-      return '<div class="provider-chip'+(providerModeSelection && providerModeSelection.id===p.id?' selected':'')+'" data-pid="'+p.id+'">'+p.name+'</div>';
-    }).join("");
-    wrap.querySelectorAll(".provider-chip").forEach(function(el){
-      el.onclick = function(){
-        var pid = el.getAttribute("data-pid");
-        providerModeSelection = allProviders.filter(function(p){return p.id===pid;})[0];
-        renderProviderChips();
-        subscribeProviderDash();
-      };
-    });
+  // ---------- টেকনিশিয়ান পোর্টাল (আসল লগইন/সাইন-আপ) ----------
+  function stopTechDashSub(){
+    if (providerDashUnsub) { try { providerDashUnsub(); } catch(e){} providerDashUnsub = null; }
   }
 
-  function subscribeProviderDash(){
-    if (providerDashUnsub) { try { providerDashUnsub(); } catch(e){} providerDashUnsub = null; }
-    if (!providerModeSelection) { $("#providerDash").innerHTML = ""; return; }
-    if (!db) { renderProviderDash([]); return; }
+  function populateTechSignupSelects(){
+    var catSel = $("#techSCategory");
+    if (catSel && !catSel.options.length) {
+      catSel.innerHTML = CATEGORIES.map(function(c){ return '<option value="'+c.id+'">'+c.name+'</option>'; }).join("");
+    }
+    var areaSel = $("#techSArea");
+    if (areaSel && !areaSel.options.length) {
+      areaSel.innerHTML = AREAS.map(function(a){ return '<option value="'+a+'">'+a+'</option>'; }).join("");
+    }
+  }
+
+  function openTechAuth(mode){
+    populateTechSignupSelects();
+    $("#techAuthOverlay").style.display = "flex";
+    $("#techLoginForm").style.display = mode === "login" ? "block" : "none";
+    $("#techSignupForm").style.display = mode === "signup" ? "block" : "none";
+  }
+  function closeTechAuth(){ $("#techAuthOverlay").style.display = "none"; }
+
+  $("#techShowLogin").onclick = function(){ openTechAuth("login"); };
+  $("#techShowSignup").onclick = function(){ openTechAuth("signup"); };
+  $("#techAuthClose1").onclick = closeTechAuth;
+  $("#techAuthClose2").onclick = closeTechAuth;
+
+  $("#techLoginSubmit").onclick = async function(){
+    var email = $("#techLoginEmail").value.trim();
+    var pass = $("#techLoginPassword").value;
+    if (!email || !pass) { toast("ইমেইল ও পাসওয়ার্ড দিন"); return; }
+    if (!authInst) { toast("Firebase কনফিগ এখনো বসানো হয়নি"); return; }
+    var btn = $("#techLoginSubmit");
+    btn.disabled = true; btn.textContent = "লগইন হচ্ছে...";
     try {
-      var q = db.collection("bookings").where("providerId","==",providerModeSelection.id).limit(100);
+      await authInst.signInWithEmailAndPassword(email, pass);
+      closeTechAuth();
+      toast("লগইন সফল হয়েছে");
+    } catch(e){
+      toast("লগইন ব্যর্থ — ইমেইল/পাসওয়ার্ড ঠিক আছে কিনা দেখুন");
+    } finally {
+      btn.disabled = false; btn.textContent = "লগইন করুন";
+    }
+  };
+
+  $("#techSignupSubmit").onclick = async function(){
+    var name = $("#techSName").value.trim();
+    var category = $("#techSCategory").value;
+    var area = $("#techSArea").value;
+    var loc = $("#techSLoc").value.trim();
+    var price = parseInt($("#techSPrice").value, 10);
+    var exp = $("#techSExp").value.trim();
+    var phone = $("#techSPhone").value.trim();
+    var email = $("#techSEmail").value.trim();
+    var pass = $("#techSPassword").value;
+    if (!name || !loc || !price || !phone || !email || pass.length < 6) {
+      toast("সব ঘর পূরণ করুন (পাসওয়ার্ড কমপক্ষে ৬ অক্ষর)"); return;
+    }
+    if (!authInst || !db) { toast("Firebase কনফিগ এখনো বসানো হয়নি"); return; }
+    var btn = $("#techSignupSubmit");
+    btn.disabled = true; btn.textContent = "জমা হচ্ছে...";
+    try {
+      var cred = await authInst.createUserWithEmailAndPassword(email, pass);
+      var uid = cred.user.uid;
+      var docRef = await db.collection("providers").add({
+        name: name, category: category, area: area, loc: loc,
+        price: price, exp: exp, phone: phone, authUid: uid,
+        status: "pending", verified: false, rating: 0, jobs: 0,
+        createdAt: Date.now()
+      });
+      myProviderDoc = { id: docRef.id, name:name, category:category, area:area, loc:loc, price:price, exp:exp, phone:phone, authUid:uid, status:"pending", verified:false, rating:0, jobs:0 };
+      closeTechAuth();
+      refreshTechView();
+      toast("আবেদন জমা হয়েছে — অ্যাডমিন অনুমোদনের অপেক্ষায়");
+    } catch(e){
+      toast(e && e.code === "auth/email-already-in-use" ? "এই ইমেইল দিয়ে আগেই অ্যাকাউন্ট আছে — লগইন করুন" : "সাইন-আপ ব্যর্থ হয়েছে, আবার চেষ্টা করুন");
+    } finally {
+      btn.disabled = false; btn.textContent = "আবেদন জমা দিন";
+    }
+  };
+
+  $("#techLogoutPending").onclick = signOutToCustomer;
+  $("#techLogoutRejected").onclick = signOutToCustomer;
+  $("#techLogoutApproved").onclick = signOutToCustomer;
+
+  // বর্তমান auth অবস্থা অনুযায়ী টেকনিশিয়ান ট্যাবের কোন সাব-ভিউ দেখাতে হবে ঠিক করে
+  function refreshTechView(){
+    var loggedOut = $("#techLoggedOut"), pendingEl = $("#techPending"), rejectedEl = $("#techRejected"), approvedEl = $("#techApproved");
+    loggedOut.style.display = "none"; pendingEl.style.display = "none";
+    rejectedEl.style.display = "none"; approvedEl.style.display = "none";
+    if (!myProviderDoc) { loggedOut.style.display = "block"; return; }
+    if (myProviderDoc.status === "pending") { pendingEl.style.display = "block"; return; }
+    if (myProviderDoc.status === "rejected") { rejectedEl.style.display = "block"; return; }
+    // approved
+    approvedEl.style.display = "block";
+    $("#techNameHeading").textContent = myProviderDoc.name + " — ড্যাশবোর্ড";
+    subscribeMyProviderDash();
+  }
+
+  function subscribeMyProviderDash(){
+    stopTechDashSub();
+    if (!myProviderDoc || !db) { renderProviderDash([]); return; }
+    try {
+      var q = db.collection("bookings").where("providerId","==",myProviderDoc.id).limit(100);
       providerDashUnsub = q.onSnapshot(function(snap){
         var items = snap.docs.map(function(d){ var v = d.data(); v.id = d.id; return v; });
         items.sort(function(a,b){ return (b.createdAt||0)-(a.createdAt||0); });
         renderProviderDash(items);
-      }, function(){ renderProviderDash([]); });
+      }, function(err){ console.warn("tech dash error", err); renderProviderDash([]); });
     } catch(e){ renderProviderDash([]); }
   }
 
@@ -848,17 +1059,124 @@
     $("#providerDash").querySelectorAll("[data-complete]").forEach(function(el){ el.onclick=function(){updateBookingStatus(el.getAttribute("data-complete"),"completed");}; });
   }
 
+  // ---------- Admin প্যানেল ----------
+  function stopAdminSubs(){
+    if (adminPendingUnsub) { try { adminPendingUnsub(); } catch(e){} adminPendingUnsub = null; }
+    if (adminApprovedUnsub) { try { adminApprovedUnsub(); } catch(e){} adminApprovedUnsub = null; }
+    if (adminBookingsUnsub) { try { adminBookingsUnsub(); } catch(e){} adminBookingsUnsub = null; }
+  }
+
+  $("#adminGearBtn").onclick = function(){ switchView("admin"); };
+
+  $("#adminLoginBtn").onclick = async function(){
+    var email = $("#adminEmail").value.trim();
+    var pass = $("#adminPassword").value;
+    if (!email || !pass) { toast("ইমেইল ও পাসওয়ার্ড দিন"); return; }
+    if (!authInst) { toast("Firebase কনফিগ এখনো বসানো হয়নি"); return; }
+    var btn = $("#adminLoginBtn");
+    btn.disabled = true; btn.textContent = "লগইন হচ্ছে...";
+    try {
+      var cred = await authInst.signInWithEmailAndPassword(email, pass);
+      if (cred.user.email !== ADMIN_EMAIL) {
+        toast("এটি Admin অ্যাকাউন্ট নয়");
+        await authInst.signOut();
+        await authInst.signInAnonymously();
+      } else {
+        toast("Admin হিসেবে লগইন হয়েছে");
+      }
+    } catch(e){
+      toast("লগইন ব্যর্থ হয়েছে");
+    } finally {
+      btn.disabled = false; btn.textContent = "লগইন";
+    }
+  };
+  $("#adminLogoutBtn").onclick = signOutToCustomer;
+
+  function refreshAdminView(){
+    var loggedOut = $("#adminLoggedOut"), panel = $("#adminPanel");
+    if (isAdmin) {
+      loggedOut.style.display = "none";
+      panel.style.display = "block";
+      subscribeAdminData();
+    } else {
+      loggedOut.style.display = "block";
+      panel.style.display = "none";
+    }
+  }
+
+  function subscribeAdminData(){
+    if (!db) return;
+    stopAdminSubs();
+    try {
+      adminPendingUnsub = db.collection("providers").where("status","==","pending").onSnapshot(function(snap){
+        var items = snap.docs.map(function(d){ var v=d.data(); v.id=d.id; return v; });
+        renderAdminPendingList(items);
+      }, function(err){ console.warn(err); });
+      adminApprovedUnsub = db.collection("providers").where("status","==","approved").onSnapshot(function(snap){
+        var items = snap.docs.map(function(d){ var v=d.data(); v.id=d.id; return v; });
+        renderAdminApprovedList(items);
+      }, function(err){ console.warn(err); });
+      adminBookingsUnsub = db.collection("bookings").where("status","==","completed").limit(500).onSnapshot(function(snap){
+        var total = 0;
+        snap.docs.forEach(function(d){ total += (d.data().price || 0); });
+        $("#adminTotalRevenue").textContent = fmtMoney(total);
+      }, function(err){ console.warn(err); });
+    } catch(e){ console.error(e); }
+  }
+
+  function renderAdminPendingList(items){
+    var wrap = $("#adminPendingList");
+    if (!items.length){ wrap.innerHTML = '<p class="note" style="color:var(--muted); font-size:12.5px;">কোনো নতুন আবেদন নেই।</p>'; return; }
+    wrap.innerHTML = items.map(function(p){
+      return '<div class="booking-card">' +
+        '<div class="top-row"><div><strong>'+p.name+'</strong><div class="prov-meta">'+catName(p.category)+' • '+p.area+', '+p.loc+'</div></div></div>' +
+        '<div class="booking-detail">📞 '+(p.phone||'—')+' • দাম শুরু '+fmtMoney(p.price||0)+'<br>'+ (p.exp||'') + '</div>' +
+        '<div class="booking-actions">' +
+          '<button class="btn btn-primary" data-approve="'+p.id+'" style="flex:1;">অনুমোদন করুন</button>' +
+          '<button class="btn btn-danger" data-rejectp="'+p.id+'" style="flex:1;">প্রত্যাখ্যান</button></div>' +
+        '</div>';
+    }).join("");
+    wrap.querySelectorAll("[data-approve]").forEach(function(el){
+      el.onclick = function(){ db.collection("providers").doc(el.getAttribute("data-approve")).update({status:"approved"}).then(function(){ toast("অনুমোদিত হয়েছে"); }); };
+    });
+    wrap.querySelectorAll("[data-rejectp]").forEach(function(el){
+      el.onclick = function(){ db.collection("providers").doc(el.getAttribute("data-rejectp")).update({status:"rejected"}).then(function(){ toast("প্রত্যাখ্যাত হয়েছে"); }); };
+    });
+  }
+
+  function renderAdminApprovedList(items){
+    var wrap = $("#adminApprovedList");
+    if (!items.length){ wrap.innerHTML = '<p class="note" style="color:var(--muted); font-size:12.5px;">এখনো কোনো অনুমোদিত টেকনিশিয়ান নেই।</p>'; return; }
+    wrap.innerHTML = items.map(function(p){
+      return '<div class="booking-card">' +
+        '<div class="top-row"><div><strong>'+p.name+'</strong><div class="prov-meta">'+catName(p.category)+' • '+p.area+', '+p.loc+'</div></div>' +
+        '<span class="status-chip status-accepted">সক্রিয়</span></div>' +
+        '<div class="booking-detail">📞 '+(p.phone||'—')+' • দাম শুরু '+fmtMoney(p.price||0)+' • রেটিং '+(p.rating||0)+'</div>' +
+        '<div class="booking-actions">' +
+          '<button class="btn btn-ghost" data-toggle-verify="'+p.id+'" style="flex:1;">'+(p.verified?'ভেরিফিকেশন তুলে নিন':'ভেরিফাই করুন')+'</button>' +
+          '<button class="btn btn-danger" data-suspend="'+p.id+'" style="flex:1;">স্থগিত করুন</button></div>' +
+        '</div>';
+    }).join("");
+    wrap.querySelectorAll("[data-toggle-verify]").forEach(function(el){
+      el.onclick = function(){
+        var id = el.getAttribute("data-toggle-verify");
+        var p = items.filter(function(x){return x.id===id;})[0];
+        db.collection("providers").doc(id).update({verified: !(p && p.verified)});
+      };
+    });
+    wrap.querySelectorAll("[data-suspend]").forEach(function(el){
+      el.onclick = function(){ db.collection("providers").doc(el.getAttribute("data-suspend")).update({status:"rejected"}).then(function(){ toast("স্থগিত করা হয়েছে"); }); };
+    });
+  }
+
   // ---------- nav ----------
   function switchView(name){
     currentView = name;
     $all(".view").forEach(function(v){ v.classList.remove("active"); });
     $("#view-"+name).classList.add("active");
     $all("nav.bottom button").forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-view")===name); });
-    if (name === "provider" && !providerModeSelection && allProviders.length){
-      providerModeSelection = allProviders[0];
-      renderProviderChips();
-      subscribeProviderDash();
-    }
+    if (name === "provider") refreshTechView();
+    if (name === "admin") refreshAdminView();
   }
   $all("nav.bottom button").forEach(function(b){
     b.onclick = function(){ switchView(b.getAttribute("data-view")); };
@@ -872,7 +1190,6 @@
     await ensureSeeded();
     await loadSubscription();
     subscribeMyBookings();
-    renderProviderChips();
   }
   boot();
 

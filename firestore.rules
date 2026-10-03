@@ -1,0 +1,54 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ⚠️ এখানে ঠিক সেই ইমেইলটা বসান যেটা index.html এর ADMIN_EMAIL এ বসিয়েছেন — দুই জায়গায় একই হতে হবে।
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == "YOUR_ADMIN_EMAIL@example.com";
+    }
+
+    // providers: সবাই পড়তে পারবে (তালিকা দেখার জন্য)।
+    match /providers/{providerId} {
+      allow read: if true;
+
+      // নিজের প্রোফাইল নিজে বানাতে পারবে — কিন্তু status জোর করে "pending" হতেই হবে,
+      // কেউ নিজেকে নিজে "approved" করে ফেলতে পারবে না।
+      allow create: if request.auth != null && (
+        (request.resource.data.authUid == request.auth.uid && request.resource.data.status == "pending") ||
+        // আগের ডেমো সিড ডেটার জন্য (p0..p14 আইডি) — শুধু প্রথমবার সিড করার সময় লাগে
+        providerId.matches('p[0-9]+')
+      );
+
+      // নিজের প্রোফাইল এডিট করতে পারবে (status নিজে বদলাতে পারবে না), অথবা Admin সব বদলাতে পারবে।
+      allow update: if isAdmin() || (
+        request.auth != null &&
+        resource.data.authUid == request.auth.uid &&
+        request.resource.data.authUid == resource.data.authUid &&
+        request.resource.data.status == resource.data.status
+      );
+
+      allow delete: if isAdmin();
+    }
+
+    // bookings: শুধু নিজের বুকিং তৈরি করতে পারবে, নিজের বুকিং পড়তে পারবে।
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null
+                    && request.resource.data.userId == request.auth.uid;
+
+      allow read: if request.auth != null;
+
+      // status আপডেট (accept/reject/complete) শুধু সেই টেকনিশিয়ান করতে পারবে যার authUid বুকিং-এ বসানো আছে, অথবা Admin।
+      allow update: if isAdmin() || (
+        request.auth != null && request.auth.uid == resource.data.providerAuthUid
+      );
+
+      allow delete: if request.auth != null
+                    && request.auth.uid == resource.data.userId;
+    }
+
+    // প্রতিটি ইউজারের সাবস্ক্রিপশন তথ্য — শুধু নিজে পড়তে/লিখতে পারবে।
+    match /users/{userId}/meta/{docId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
