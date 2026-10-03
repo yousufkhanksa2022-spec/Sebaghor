@@ -4,7 +4,7 @@ service cloud.firestore {
 
     // ⚠️ এখানে ঠিক সেই ইমেইলটা বসান যেটা index.html এর ADMIN_EMAIL এ বসিয়েছেন — দুই জায়গায় একই হতে হবে।
     function isAdmin() {
-      return request.auth != null && request.auth.token.email == "YOUR_ADMIN_EMAIL@example.com";
+      return request.auth != null && request.auth.token.email == "kyousuf161@gmail.com";
     }
 
     // providers: সবাই পড়তে পারবে (তালিকা দেখার জন্য)।
